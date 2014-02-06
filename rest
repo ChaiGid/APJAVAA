@@ -1,0 +1,46 @@
+
+public interface Area 
+{
+	double getArea();
+}
+
+public interface Volume 
+{
+	double getVolume();
+}
+public class Square extends Shape implements Area
+{
+	public double mySide;
+	public Square(double s, String n)
+	{
+		super(n);
+		mySide = s;
+	}
+	public double getArea() {
+		return Math.pow(mySide, 2);
+	}
+
+}
+
+public class Cylinder extends Circle implements Volume
+{
+	public double myHeight;
+	public Cylinder(double h, double r, String n)
+	{
+		super(r, n);
+		myHeight = h;
+	}
+	public double getVolume() {
+		return super.getArea() * myHeight;
+	}
+}
+public class Sphere extends Circle implements Volume
+{
+	public Sphere(double r, String n)
+	{
+		super(r,n);
+	}
+	public double getVolume() {
+		return (4.0/3.0) * Math.PI * Math.pow(Math.sqrt(super.getArea()) / Math.PI, 3);
+	}
+}
