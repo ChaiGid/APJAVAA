@@ -1,0 +1,12 @@
+public class Shape 
+{
+	public String myName;
+	public Shape(String name)
+	{
+		myName = name; 
+	}
+	public String getName()
+	{
+		return myName;
+	}
+}
