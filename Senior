@@ -1,0 +1,18 @@
+
+public class Senior extends Student
+{
+	public boolean willGraduate;
+	public Senior(String name, double GPA, boolean willgraduate)
+	{
+		super(name, 12, GPA);
+		willGraduate = willgraduate;
+	}
+	public boolean getWillGraduate()
+	{
+		return willGraduate;
+	}
+	public String toString()
+	{
+		return "Senior: Will Graduate = " + willGraduate + " " + super.toString();
+	}
+}
