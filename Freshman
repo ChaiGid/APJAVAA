@@ -1,0 +1,17 @@
+public class Freshman extends Student
+{
+	private String myMiddleSchool;
+	public Freshman(String name, double GPA, String middleschool)
+	{
+		super(name, 9, GPA);
+		myMiddleSchool = middleschool;
+	}
+	public String getMiddleSchool()
+	{
+		return myMiddleSchool;
+	}
+	public String toString()
+	{
+		return "Freshman: Middle School = " + myMiddleSchool + " " + super.toString();
+ 	}
+}
