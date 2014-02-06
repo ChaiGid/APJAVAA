@@ -1,0 +1,37 @@
+
+public class Student implements Comparable<Student>
+{
+	private String myName;
+	private int myGrade;
+	private double myGPA;
+		public Student()
+		{
+			this("Name", 9, 4.0);
+		}
+		public Student(String name, int grade, double GPA)
+		{
+			myName = name;
+			myGrade = grade;
+			myGPA = GPA;
+		}
+		public String getName()
+		{
+			return myName;
+		}
+		public double getGPA()
+		{
+			return myGPA;
+		}
+		public int getGrade()
+		{
+			return myGrade;
+		}
+		public String toString()
+		{
+			return "Student " + myName + "| GPA = " + myGPA + "| Grade = " + myGrade;
+		}
+		public int compareTo(Student other) {
+			return myGrade - other.getGrade();
+		}
+	}
+}
