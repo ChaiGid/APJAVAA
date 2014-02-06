@@ -1,0 +1,18 @@
+
+public class Junior extends Student
+{
+	public boolean takenACT;
+	public Junior(String name, double GPA, boolean takenact)
+	{
+		super(name, 11, GPA);
+		takenACT = takenact;
+	}
+	public boolean getTakenACT()
+	{
+		return takenACT;
+	}
+	public String toString()
+	{
+		return "Junior: Taken ACT = " + takenACT + " " + super.toString();
+	}
+}
