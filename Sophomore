@@ -1,0 +1,18 @@
+
+public class Sophomore extends Student
+{
+	public int myTardies;
+	public Sophomore(String name, double GPA, int tardies)
+	{
+		super(name, 10, GPA);
+		myTardies = tardies;
+	}
+	public int getTardies()
+	{
+		return myTardies;
+	}
+	public String toString()
+	{
+		return "Sophomore: Tardies = " + myTardies + " " + super.toString();
+	}
+}
