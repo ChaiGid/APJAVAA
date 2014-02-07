@@ -1,4 +1,3 @@
-
 public interface Area 
 {
 	double getArea();
@@ -44,3 +43,24 @@ public class Sphere extends Circle implements Volume
 		return (4.0/3.0) * Math.PI * Math.pow(Math.sqrt(super.getArea()) / Math.PI, 3);
 	}
 }
+public class Cube extends Square implements Volume
+{
+	public Cube(double s, String n)
+	{
+		super(s, n);
+	}
+	public double getVolume() {
+		return Math.pow(super.mySide, 3);
+	}
+}
+public class Glome extends Sphere implements Volume
+{
+	public Glome(double r, String n) {
+		super(r, n);
+	}
+	public double getVolume()
+	{
+		return super.getVolume();
+	}
+}
+
