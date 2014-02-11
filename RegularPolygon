@@ -1,0 +1,31 @@
+import java.awt.geom.Point2D;
+public class RegularPolygon extends Polygon 
+{
+	int theta = 0;
+	double radTheta = 0;
+	public RegularPolygon(Point2D center, int numSides, int radius)
+	{
+		super(center, numSides, radius);
+	}
+	protected void setVertices()
+	{
+		double x, y;
+		for(int count = 0; count < super.myVertices.length; count++)
+		{
+			radTheta = Math.toRadians(theta);
+			x = mycenterPoint.getX() + Math.toRadians(theta);
+			y = mycenterPoint.getY() + Math.sin(radTheta) * myradiusLength;
+			myVertices[count] = new Point2D.Double(x,y);
+			theta += 360/mynumSides;
+		}
+	}
+	public String toString()
+	{
+		for(int count = 0; count < mynumSides; count++)
+		{
+			radTheta = Math.toRadians(theta);
+			theta += 360/mynumSides;
+			myVertices[count] = new Point2D.Double(x,y);
+		}
+	}
+}
