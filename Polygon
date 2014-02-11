@@ -1,0 +1,33 @@
+import java.awt.geom.Point2D;
+public class Polygon 
+{
+	public int mynumSides;
+	public int myradiusLength;
+	public Point2D mycenterPoint;
+	public Point2D[] myVertices;
+	public Polygon(Point2D center, int numSides, int radiusLength)
+	{
+		mynumSides = numSides;
+		myradiusLength = radiusLength;
+		mycenterPoint = center;
+	}
+	protected void setVertices(Point2D[] vertices)
+	{
+		myVertices = vertices;
+	}
+	public static String getMyVertices(Point2D[] values)
+	{
+		String returnString = "";
+		for(int count = 0; count < values.length; count++)
+		{
+			returnString += values[count];
+			returnString += " ";
+		}
+		return returnString;
+	}
+	public String toString()
+	{
+		String output = "Polygon's sides = " + mynumSides + " radius length = " + myradiusLength + " center point = " + mycenterPoint.toString() + " and vertices = " + Polygon.getMyVertices(myVertices);
+		return output;
+	}
+}
