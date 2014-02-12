@@ -1,0 +1,53 @@
+import java.awt.Graphics2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+public class Polygon 
+{
+	public int mynumSides;
+	public int myradiusLength;
+	public Point2D mycenterPoint;
+	public Point2D[] myVertices;
+	public Polygon(Point2D center, int numSides, int radiusLength)
+	{
+		mynumSides = numSides;
+		myradiusLength = radiusLength;
+		mycenterPoint = center;
+	}
+	protected void setVertices(Point2D[] vertices)
+	{
+		myVertices = vertices;
+	}
+	public static String getMyVertices(Point2D[] values)
+	{
+		String returnString = "";
+		for(int count = 0; count < values.length; count++)
+		{
+			returnString += values[count];
+			returnString += " ";
+		}
+		return returnString;
+	}
+	public String toString()
+	{
+		String output = "Polygon's sides = " + mynumSides + " radius length = " + myradiusLength + " center point = " + mycenterPoint.toString() + " and vertices = " + Polygon.getMyVertices(myVertices);
+		return output;
+	}
+	public void drawPolyon(Graphics2D graphic) 
+	{
+		Line2D line = null;
+		Line2D[] values = new Line2D[mynumSides];
+			for(int count = 0; count < mynumSides - 1; count++) 
+			{
+				values[count] = new Line2D.Double();
+				values[count].setLine(myVertices[count], myVertices[count +1]);
+			}
+		values[mynumSides - 1] = new Line2D.Double();
+		values[mynumSides - 1].setLine(myVertices[mynumSides - 1], myVertices[0]);
+		int count = 0;
+		while(count < values.length) 
+		{
+			graphic.draw(line);
+			count++;
+		}
+	}
+}
