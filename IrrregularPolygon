@@ -1,0 +1,26 @@
+import java.awt.geom.Point2D;
+
+public class IrregularPolygon extends Polygon {
+
+	public IrregularPolygon(int radius, Point2D center, int numSides) {
+		super(center, radius, numSides);
+		super.setVertices(randVerticesGen(radius, center, numSides));
+	}
+
+	private Point2D[] getVertices(int radius, Point2D center, int numSides) {
+		Point2D.Double[] tmp = new Point2D.Double[numSides];
+		double x, y;
+		double theta = 0;
+		double radTheta;
+
+		for(int i = 0; i < numSides; i++) {
+			tmp[i] = new Point2D.Double();
+			radTheta = Math.toRadians(theta);
+			x = PolygonFrame.randInt(0, radius) * Math.cos(radTheta);
+			y = PolygonFrame.randInt(0, radius) * Math.sin(radTheta);
+			tmp[i].setLocation(x + center.getX(), y + center.getY());
+			theta += (360.0 / numSides);
+		}
+		return tmp;
+	}
+}
