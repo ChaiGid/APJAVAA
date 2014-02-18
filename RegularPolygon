@@ -3,21 +3,18 @@ public class RegularPolygon extends Polygon
 {
 	int theta = 0;
 	double radTheta = 0;
-	public RegularPolygon(Point2D center, int numSides, int radius)
+	double x, y;
+	public RegularPolygon(int numSides, Point2D.Double center, int radius)
 	{
-		super(center, numSides, radius);
+		super(numSides, center, radius);
 	}
-	protected void setVertices()
+	for(int count = 0; count < super.myVertices.length; count++)
 	{
-		double x, y;
-		for(int count = 0; count < super.myVertices.length; count++)
-		{
-			radTheta = Math.toRadians(theta);
-			x = mycenterPoint.getX() + Math.toRadians(theta);
-			y = mycenterPoint.getY() + Math.sin(radTheta) * myradiusLength;
-			myVertices[count] = new Point2D.Double(x,y);
-			theta += 360/mynumSides;
-		}
+		radTheta = Math.toRadians(theta);
+		x = mycenterPoint.getX() + Math.toRadians(theta);
+		y = mycenterPoint.getY() + Math.sin(radTheta) * myradiusLength;
+		myVertices[count] = new Point2D.Double(x,y);
+		theta += 360/mynumSides;
 	}
 	public String toString()
 	{
@@ -27,5 +24,8 @@ public class RegularPolygon extends Polygon
 			theta += 360/mynumSides;
 			myVertices[count] = new Point2D.Double(x,y);
 		}
+		String output = "Polygon's sides = " + mynumSides + " radius length = " + myradiusLength + " center point = " + mycenterPoint.toString() + " and vertices = " + super.getMyVertices(myVertices);
+		return output; 
+	}
 	}
 }
