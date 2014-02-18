@@ -3,16 +3,28 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 public class IrregularPolygon extends Polygon
 {
-	private Point2D mycenterPoint;
-	private Point2D[] myVertices;
-	private int mynumSides;
-	public IrregularPolygon(Point2D center, int numSides, Point2D[] values)
+	public IrregularPolygon(int myNumSides,Point2D myCenter,int maxRadius, int minRadius, int xVelocity, int yVelocity, int rVelocity) 
 	{
-		super(center, numSides, values);
-		mycenterPoint = center;
-		mynumSides = numSides;
-		myVertices = values;
+		super(myCenter, myNumSides, maxRadius, xVelocity, yVelocity, rVelocity);
+		double theta = 0;
+		double radTheta = 0;
+		Point2D[] temp = new Point2D[myNumSides];
+		int radius = 0;
+		for(int c=0; c<myNumSides; c++)
+		{
+			radius = randInt(minRadius, maxRadius);
+			radTheta=Math.toRadians(theta);
+			double x = myCenter.getX()+Math.cos(radTheta)*Math.random() * radius;
+			double y = myCenter.getY()+Math.sin(radTheta)*Math.random() * radius;
+			myVertices[c]= new Point2D.Double(x,y);
+			theta += 360/myNumSides;
+		}
+		super.setVertices(temp);
 	}
+	private int randInt(int lower, int upper)
+	  {
+		  return (int) (Math.random()*(upper-lower+1)+lower);
+	  }
 	public void drawPolyon(Graphics2D graphic) 
 	{
 		Line2D line = null;
@@ -31,7 +43,4 @@ public class IrregularPolygon extends Polygon
 			count++;
 		}
 	}
-	
-	
-
 }
